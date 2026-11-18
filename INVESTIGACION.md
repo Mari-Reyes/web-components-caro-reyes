@@ -29,24 +29,22 @@ Hoy en día, los Web Components (Custom Elements, Shadow DOM y HTML Templates) c
 
 ---
 
-## Parte 2: Frameworks, librerías y Node.js
+## Parte 2. Investigación: frameworks, librerías y Node.js
 
 ### 1. Explica con un ejemplo la diferencia entre estándar del navegador, librería, framework y entorno de ejecución.
-* **Respuesta:** 
-  * *Estándar del navegador:* ...
-  * *Librería (ej. React):* ...
-  * *Framework (ej. Angular):* ...
-  * *Entorno de ejecución (ej. Node.js):* ...
+Un *estándar del navegador* (como los Web Components) es una especificación nativa soportada directamente por los motores de los navegadores sin instalar librerías externas. Una *librería* (como React) es un conjunto de funciones y componentes enfocados en construir interfaces de usuario de forma modular. Un *framework* (como Angular) es una plataforma estructurada y completa con reglas estrictas para aplicaciones grandes. Finalmente, un *entorno de ejecución* (como Node.js) permite ejecutar código JavaScript fuera del navegador, en el servidor o máquina local.
 
 ### 2. Tabla comparativa
 
 | Criterio | Web Components nativos | React / Vue | Angular |
 | :--- | :--- | :--- | :--- |
-| **Tipo (estándar, librería o framework)** | Estándar del navegador[cite: 2] | Librería / Framework progresivo[cite: 2] | Framework completo[cite: 2] |
-| **Cómo se crea un componente** | Mediante clases JS y Shadow DOM | (Escribe cómo se crea en React/Vue)[cite: 2] | (Escribe cómo se crea en Angular)[cite: 2] |
-| **Necesita instalar herramientas (npm)** | No es estrictamente obligatorio | Sí | Sí |
-| **Ventajas principales** | (Indica una ventaja)[cite: 2] | (Indica una ventaja)[cite: 2] | (Indica una ventaja)[cite: 2] |
-| **Desventajas principales** | (Indica una desventaja)[cite: 2] | (Indica una desventaja)[cite: 2] | (Indica una desventaja)[cite: 2] |
+| *Tipo* (estándar, librería o framework) | Estándar web nativo del navegador. | React es una librería; Vue es un framework progresivo. | Framework completo de desarrollo. |
+| *Cómo se crea un componente* | Mediante Clases JS que extienden ⁠ HTMLElement ⁠ y ⁠ customElements.define() ⁠. | Usando funciones/clases con JSX (React) o archivos ⁠ .vue ⁠ con sintaxis de plantilla. | Mediante clases de TypeScript decoradas con ⁠ @Component() ⁠. |
+| *Necesita instalar herramientas (⁠ npm ⁠)* | No estrictamente; funciona con vainilla JS nativo en el navegador. | Sí, requiere Node.js y un empaquetador (Vite, Webpack). | Sí, requiere Node.js y Angular CLI para su gestión. |
+| *Ventajas principales* | Estándar puro, sin dependencias, alto rendimiento y reutilizable en cualquier framework. | Ecosistema gigantesco, gran comunidad, renderizado rápido y JSX intuitivo. | Estructura robusta, inyección de dependencias y TypeScript integrado de serie. |
+| *Desventajas principales* | Requiere más código repetitivo (boilerplate) para gestión de estado avanzada. | Depende de actualizaciones de terceros y requiere herramientas de compilación. | Curva de aprendizaje muy pronunciada y mayor peso inicial en la aplicación. |
+
+
 
 ### 3. ¿Qué es Node.js, para qué se usa y qué relación tiene npm con React, Vue y Angular? Si una tienda en línea usa React y Node.js, ¿qué hace cada uno?
 * **Respuesta:** 
