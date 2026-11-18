@@ -8,7 +8,134 @@
     <link rel="stylesheet" href="js/main.js">
     <link rel = "icon" type="images/svg" href="./images/icon.svg">
 </head>
+
 <body>
-    
+
+    <!-- Título principal de la página -->
+    <header class="main-header">
+        <h2>TARJETA DE EVENTO | AGENCIA CULTURAL</h2>
+    </header>
+
+    <!-- R1: Template propio con su <style> interno, estructura y marcadores -->
+    <template id="evento-template">
+        <style>
+            .card {
+                background-color: #d4b584;
+                border-radius: 12px;
+                padding: 20px;
+                width: 380px;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+                margin-bottom: 20px;
+                box-sizing: border-box;
+            }
+            .titulo-box {
+                background-color: #6b5353;
+                color: #f7e1b5;
+                text-align: center;
+                padding: 12px;
+                border-radius: 8px;
+                font-size: 1.2rem;
+                font-weight: bold;
+                margin-bottom: 15px;
+                letter-spacing: 1px;
+            }
+            .info-row {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 10px;
+            }
+            .label {
+                background-color: #f4e4bc;
+                color: #5c4a4a;
+                padding: 8px 12px;
+                border-radius: 6px;
+                font-weight: bold;
+                width: 35%;
+                text-align: center;
+                font-size: 0.9rem;
+            }
+            .value {
+                background-color: #f9f1df;
+                color: #4a3c3c;
+                padding: 8px 12px;
+                border-radius: 6px;
+                width: 55%;
+                text-align: center;
+                font-size: 0.9rem;
+            }
+            /* R4: Estilo para el slot de descripción libre */
+            .slot-box {
+                margin-top: 15px;
+                background-color: #f4e4bc;
+                padding: 10px;
+                border-radius: 6px;
+                color: #5c4a4a;
+                font-size: 0.85rem;
+                border-left: 4px solid #6b5353;
+            }
+        </style>
+
+        <div class="card">
+            <!-- Título del evento -->
+            <div class="titulo-box" id="slot-titulo">Título del Evento</div>
+
+            <!-- Fecha -->
+            <div class="info-row">
+                <div class="label">Fecha</div>
+                <div class="value" id="val-fecha">17/11/2026</div>
+            </div>
+
+            <!-- Lugar -->
+            <div class="info-row">
+                <div class="label">Lugar</div>
+                <div class="value" id="val-lugar">Lugar por definir</div>
+            </div>
+
+            <!-- Cupos -->
+            <div class="info-row">
+                <div class="label">Cupos</div>
+                <div class="value" id="val-cupos">0 Personas</div>
+            </div>
+
+            <!-- R4: Slot para nota o descripción libre -->
+            <div class="slot-box">
+                <slot>Sin descripción adicional.</slot>
+            </div>
+        </div>
+    </template>
+
+    <!-- R5: La página muestra al menos 3 instancias con datos distintos y atributos (R3) -->
+    <main class="cards-container">
+        
+        <!-- Instancia 1 -->
+        <tarjeta-evento 
+            titulo="Noche de Poesía" 
+            fecha="20/11/2026" 
+            lugar="Biblioteca Municipal" 
+            cupos="35 Personas">
+            Recital abierto al público con autores locales y música instrumental en vivo.
+        </tarjeta-evento>
+
+        <!-- Instancia 2 -->
+        <tarjeta-evento 
+            titulo="Exposición de Arte" 
+            fecha="25/11/2026" 
+            lugar="Centro Cultural" 
+            cupos="50 Personas">
+            Muestra fotográfica y grafitis en vivo sobre muros móviles. Entrada libre.
+        </tarjeta-evento>
+
+        <!-- Instancia 3 -->
+        <tarjeta-evento 
+            titulo="Taller de Danza" 
+            fecha="30/11/2026" 
+            lugar="Teatro Santander" 
+            cupos="20 Personas">
+            Clase magistral de ritmos tradicionales de la región andina. Traer ropa cómoda.
+        </tarjeta-evento>
+
+    </main>
+
 </body>
 </html>
