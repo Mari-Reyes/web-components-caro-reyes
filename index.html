@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tarjeta de evento | Agencia cultural</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="js/main.js">
-    <link rel = "icon" type="images/svg" href="./images/icon.svg">
+    <script src="js/main.js" defer></script>
+    <link rel="icon" type="image/svg+xml" href="./images/icon.svg">
 </head>
 
 <body>
@@ -19,62 +19,65 @@
     <!-- R1: Template propio con su <style> interno, estructura y marcadores -->
     <template id="evento-template">
         <style>
-            .card {
-                background-color: #d4b584;
-                border-radius: 12px;
-                padding: 20px;
-                width: 380px;
-                box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-                margin-bottom: 20px;
-                box-sizing: border-box;
-            }
-            .titulo-box {
-                background-color: #6b5353;
-                color: #f7e1b5;
-                text-align: center;
-                padding: 12px;
-                border-radius: 8px;
-                font-size: 1.2rem;
-                font-weight: bold;
-                margin-bottom: 15px;
-                letter-spacing: 1px;
-            }
-            .info-row {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                margin-bottom: 10px;
-            }
-            .label {
-                background-color: #f4e4bc;
-                color: #5c4a4a;
-                padding: 8px 12px;
-                border-radius: 6px;
-                font-weight: bold;
-                width: 35%;
-                text-align: center;
-                font-size: 0.9rem;
-            }
-            .value {
-                background-color: #f9f1df;
-                color: #4a3c3c;
-                padding: 8px 12px;
-                border-radius: 6px;
-                width: 55%;
-                text-align: center;
-                font-size: 0.9rem;
-            }
-            /* R4: Estilo para el slot de descripción libre */
-            .slot-box {
-                margin-top: 15px;
-                background-color: #f4e4bc;
-                padding: 10px;
-                border-radius: 6px;
-                color: #5c4a4a;
-                font-size: 0.85rem;
-                border-left: 4px solid #6b5353;
-            }
+    .card {
+        background-color: #d4b584;
+        border-radius: 12px;
+        padding: 20px;
+        width: 380px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        margin-bottom: 20px;
+        box-sizing: border-box;
+    }
+    .titulo-box {
+        background-color: #6b5353;
+        color: #f7e1b5;
+        text-align: center;
+        padding: 12px;
+        border-radius: 8px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-bottom: 18px; 
+        letter-spacing: 1px;
+    }
+    .info-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px; 
+        gap: 10px; 
+    }
+    .label {
+        background-color: #f4e4bc;
+        color: #5c4a4a;
+        padding: 9px 12px;
+        border-radius: 6px;
+        font-weight: bold;
+        width: 35%;
+        text-align: center;
+        font-size: 0.9rem;
+    }
+    .value {
+        background-color: #f9f1df;
+        color: #4a3c3c;
+        padding: 9px 12px;
+        border-radius: 6px;
+        width: 55%;
+        text-align: center;
+        font-size: 0.9rem;
+    }
+    /* Slot de descripción libre */
+    .slot-box {
+        margin-top: 18px; /* Mayor separación con respecto a la última fila */
+        background-color: #f4e4bc;
+        padding: 12px;
+        border-radius: 6px;
+        color: #5c4a4a;
+        font-size: 0.85rem;
+        border-left: 4px solid #6b5353;
+    }
         </style>
+
+
 
         <div class="card">
             <!-- Título del evento -->

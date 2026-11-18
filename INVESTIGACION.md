@@ -1,67 +1,68 @@
 # Investigación: Web Components, HTML Templates y Frameworks
 
-## Parte 1: Web Components
+## Parte 1. Investigación: Web Components
 
 ### 1. ¿Qué problema resuelven los Web Components y qué aporta cada tecnología: Custom Elements, Shadow DOM y HTML Templates?
-* **Respuesta:** Principalmente, los Web Components solucionan la fragmentación y la falta de modularidad nativa en el desarrollo web, permitiendo construir componentes reutilizables y encapsulados sin depender de librerías o frameworks pesados. Esto es posible gracias a tres tecnologías clave: los Custom Elements, que posibilitan la creación de etiquetas HTML propias y semánticas; el Shadow DOM, que aísla los estilos CSS y la estructura interna para evitar colisiones con el resto de la página; y los HTML Templates, que definen fragmentos de marcado latentes e inactivos, listos para ser clonados e insertados dinámicamente cuando se requiera.
+Los Web Components resuelven el problema de la modularidad y reutilización de código en la web sin depender de librerías externas o frameworks pesados. 
+* **Custom Elements:** Permiten crear etiquetas HTML personalizadas y definir su comportamiento mediante clases de JavaScript.
+* **Shadow DOM:** Aporta encapsulamiento al aislar el DOM interno y los estilos del componente para evitar conflictos con el resto de la página.
+* **HTML Templates (`<template>`):** Permiten definir estructuras HTML reutilizables que permanecen ocultas y latentes hasta que se instancian mediante JavaScript.
 
-### 2. ¿En qué se diferencia un <template> de un <div> oculto con display: none?
-* **Respuesta:** La diferencia fundamental radica en su procesamiento y ciclo de vida dentro del navegador. Un elemento <template> permanece completamente inactivo al cargar la página; por lo tanto, si contiene imágenes o scripts, estos no se cargan ni se ejecutan a menos que se acceda explícitamente a su contenido por código. En cambio, un <div> con display: none sí es procesado, parseado e integrado en su totalidad dentro del árbol del DOM por el navegador, consumiendo recursos y ejecutando sus contenidos internos aunque no sean visibles en pantalla.
+### 2. ¿En qué se diferencia un `<template>` de un `<div>` oculto con display: none?
+* **Lo que se muestra:** Un `<template>` no se renderiza ni se muestra visualmente en el DOM al cargar la página, mientras que un `<div>` con `display: none` sí está presente en el DOM, solo que oculto visualmente.
+* **Lo que se ejecuta:** Los elementos multimedia o scripts dentro de un `<template>` no se ejecutan ni cargan recursos hasta que son clonados e insertados; en cambio, un `<div>` oculta el contenido visualmente pero sus recursos internos y scripts se cargan y procesan de inmediato.
+* **Lo que encuentra `document.querySelector`:** El contenido dentro de un `<template>` es inaccesible directamente mediante selectores comunes (como `querySelector`) a menos que se acceda a su propiedad `.content`, mientras que el contenido de un `<div>` oculto es encontrado y manipulado de forma inmediata por el DOM general.
 
 ### 3. ¿Qué cambia entre el Shadow DOM en modo "open" y en modo "closed"?
-* **Respuesta:** La principal diferencia se encuentra en el nivel de acceso y encapsulamiento permitido desde el código JavaScript externo. Cuando se configura un Shadow DOM en modo open, la propiedad element.shadowRoot devuelve la referencia directa al nodo raíz sombra, lo que facilita su inspección, depuración y manipulación desde fuera del componente. Por el contrario, en el modo closed, dicha propiedad devuelve null de manera intencional, lo que bloquea el acceso externo a los elementos internos y ofrece un encapsulamiento más estricto, aunque dificulta su testeo e inspección en las herramientas de desarrollo.
+La diferencia radica en el nivel de acceso externo al Shadow Root:
+* **Modo "open":** Permite que desde el script principal (fuera del componente) se pueda acceder al Shadow DOM usando la propiedad `element.shadowRoot`. Es el modo más común.
+* **Modo "closed":** Bloquea el acceso externo devolviendo `null` al intentar consultar `element.shadowRoot` desde el exterior, proporcionando un encapsulamiento más cerrado (aunque poco efectivo contra inspecciones avanzadas de navegador).
 
-### 4. ¿Qué es un <slot> y para qué sirve en un componente reutilizable?
-* **Respuesta:** (Escribe aquí 3 a 6 líneas[cite: 1] explicando que es un punto de inserción (placeholder) dentro del Shadow DOM que permite proyectar contenido personalizado escrito por el usuario fuera del componente, logrando flexibilidad en la reutilización[cite: 1]).
+### 4. ¿Qué es un `<slot>` y para qué sirve en un componente reutilizable?
+Un `<slot>` es un marcador de posición (placeholder) dentro del Shadow DOM de un Web Component que permite inyectar contenido HTML personalizado desde el exterior. Sirve para hacer que el componente sea altamente reutilizable, ya que la estructura fija se queda en el template, pero el texto o los elementos internos (como notas o descripciones libres) pueden cambiar dinámicamente en cada instancia sin romper el encapsulamiento.
 
 ### 5. ¿Qué navegadores soportan hoy los Web Components? Indica la fuente y la fecha de consulta.
-* **Respuesta:** (Escribe aquí 3 a 6 líneas[cite: 1] indicando que cuentan con soporte nativo en todos los navegadores modernos (Chrome, Firefox, Safari, Edge). Añade la fuente y fecha de consulta).
+Hoy en día, los Web Components (Custom Elements, Shadow DOM y HTML Templates) cuentan con soporte nativo completo en todos los navegadores modernos, incluyendo Google Chrome, Mozilla Firefox, Apple Safari y Microsoft Edge.
+
+* **Fuente:** MDN Web Docs ("Web Components") y Can I use.
+* **Fecha de consulta:** 17 de noviembre de 2026.
 
 ---
 
-## Parte 2: Frameworks, librerías y Node.js
+## Parte 2. Investigación: frameworks, librerías y Node.js
 
 ### 1. Explica con un ejemplo la diferencia entre estándar del navegador, librería, framework y entorno de ejecución.
-* **Respuesta:** Para entenderlo de forma práctica mediante la construcción de una interfaz, podemos usar la analogía de la construcción de una casa:
-
-  * *Estándar del navegador:* Son las especificaciones y herramientas que trae nativas la plataforma web (como los cimientos y ladrillos universales), los cuales funcionan directamente en cualquier navegador sin instalar nada externo.
-  * *Librería (ej. React):* Es un conjunto de piezas prefabricadas y especializadas (como un kit de carpintería modular) que tú decides cuándo y dónde utilizar para resolver partes específicas de la interfaz, manteniendo el control total de la estructura.
-  * *Framework (ej. Angular):* Es un sistema estructural completo (como un plano arquitectónico rígido y predefinido) que te impone reglas estrictas, carpetas y normativas sobre cómo debes construir toda la aplicación de principio a fin.
-  * *Entorno de ejecución (ej. Node.js):* Es la infraestructura base o el taller completo (herramientas de obra, electricidad y maquinaria) que permite ejecutar código JavaScript fuera de los límites del navegador, procesando servidores y dependencias.
+Un *estándar del navegador* (como los Web Components) es una especificación nativa soportada directamente por los motores de los navegadores sin instalar librerías externas. Una *librería* (como React) es un conjunto de funciones y componentes enfocados en construir interfaces de usuario de forma modular. Un *framework* (como Angular) es una plataforma estructurada y completa con reglas estrictas para aplicaciones grandes. Finalmente, un *entorno de ejecución* (como Node.js) permite ejecutar código JavaScript fuera del navegador, en el servidor o máquina local.
 
 ### 2. Tabla comparativa
 
 | Criterio | Web Components nativos | React / Vue | Angular |
 | :--- | :--- | :--- | :--- |
-| **Tipo (estándar, librería o framework)** | Es un estándar nativo del navegador basado en especificaciones oficiales de la W3C y WHATWG.[cite: 2] | React es una librería enfocada en la interfaz de usuario; Vue es un framework progresivo adaptable.[cite: 2] | Es un framework completo y robusto diseñado para desarrollar aplicaciones web empresariales de gran escala.[cite: 2] |
-| **Cómo se crea un componente** | Se define una clase en JavaScript que hereda de `HTMLElement`, encapsulando su HTML y CSS mediante Shadow DOM y `<template>`. | En React se crean mediante funciones o clases que retornan sintaxis JSX; en Vue se estructuran en archivos `.vue` que integran plantilla, lógica y estilos. | Se construyen mediante clases de TypeScript decoradas con `@Component` que vinculan una plantilla HTML, hojas de estilo y lógica modular. |
-| **Necesita instalar herramientas (npm)** | No requiere instalaciones; funciona directamente en cualquier navegador moderno usando HTML, CSS y JavaScript puro. | Sí, requieren Node.js y `npm` para instalar sus paquetes, gestionar dependencias y compilar el código JSX o `.vue` antes de llevarlo a producción. | Sí, exige instalar Node.js, `npm` y su herramienta de línea de comandos oficial (Angular CLI) para generar, compilar y ejecutar el proyecto. |
-| **Ventajas principales** | Son 100 % interoperables entre cualquier tecnología, no generan dependencias externas y cuentan con encapsulamiento nativo de estilos. | Tienen un ecosistema gigante, altísima flexibilidad arquitectónica y un excelente rendimiento gracias al uso del Virtual DOM. | Ofrece una arquitectura estandarizada, tipado estricto con TypeScript y soluciones integradas de fábrica (enrutamiento, formularios y peticiones HTTP). |
-| **Desventajas principales** | Requieren escribir más código base (boilerplate) para tareas repetitivas y carecen de un sistema nativo para gestionar estados globales complejos. | Al centrarse solo en la vista, obligan al desarrollador a elegir e integrar librerías de terceros para enrutamiento o manejo de estado global. | Tiene una curva de aprendizaje pronunciada y menor flexibilidad debido a sus reglas estrictas y estructura rígida. |
+| *Tipo* (estándar, librería o framework) | Estándar web nativo del navegador. | React es una librería; Vue es un framework progresivo. | Framework completo de desarrollo. |
+| *Cómo se crea un componente* | Mediante Clases JS que extienden ⁠ HTMLElement ⁠ y ⁠ customElements.define() ⁠. | Usando funciones/clases con JSX (React) o archivos ⁠ .vue ⁠ con sintaxis de plantilla. | Mediante clases de TypeScript decoradas con ⁠ @Component() ⁠. |
+| *Necesita instalar herramientas (⁠ npm ⁠)* | No estrictamente; funciona con vainilla JS nativo en el navegador. | Sí, requiere Node.js y un empaquetador (Vite, Webpack). | Sí, requiere Node.js y Angular CLI para su gestión. |
+| *Ventajas principales* | Estándar puro, sin dependencias, alto rendimiento y reutilizable en cualquier framework. | Ecosistema gigantesco, gran comunidad, renderizado rápido y JSX intuitivo. | Estructura robusta, inyección de dependencias y TypeScript integrado de serie. |
+| *Desventajas principales* | Requiere más código repetitivo (boilerplate) para gestión de estado avanzada. | Depende de actualizaciones de terceros y requiere herramientas de compilación. | Curva de aprendizaje muy pronunciada y mayor peso inicial en la aplicación. |
+
+
 
 ### 3. ¿Qué es Node.js, para qué se usa y qué relación tiene npm con React, Vue y Angular? Si una tienda en línea usa React y Node.js, ¿qué hace cada uno?
-* **Respuesta:** 
-  * *Node.js y npm:* Node.js es un entorno de ejecución basado en el motor V8 de Google que permite ejecutar código JavaScript del lado del servidor y fuera del navegador. Por su parte, npm (Node Package Manager) es el gestor de paquetes que acompaña a Node.js y sirve para descargar, actualizar y administrar todas las librerías, dependencias y herramientas necesarias para trabajar con tecnologías como React, Vue o Angular.
-  * *Caso de la tienda en línea:* Si un e-commerce utiliza React y Node.js, React opera en el lado del cliente (frontend), encargándose de renderizar de manera fluida y dinámica la interfaz de usuario, los carritos de compras y los filtros visuales en el navegador del usuario. En cambio, Node.js opera en el servidor (backend), encargándose de procesar la lógica de negocio, conectar con la base de datos de productos, gestionar los pagos y responder a las peticiones de la API.
+•⁠  ⁠*Node.js y npm:* Node.js es un entorno de ejecución basado en el motor V8 de Chrome que permite ejecutar JavaScript fuera del navegador. Su gestor de paquetes (⁠ npm ⁠) se usa en React, Vue y Angular para instalar dependencias y bibliotecas de desarrollo.
+•⁠  ⁠*Tienda en línea (React y Node.js):* React se encarga de toda la interfaz de usuario del cliente (lo que ve el usuario en el navegador), mientras que Node.js funciona en el servidor gestionando la lógica de backend, las peticiones a la base de datos y las pasarelas de pago.
 
-### 4. Elige la herramienta que usarías en cada caso y justifica en 3 a 5 líneas:
-* **a. Un botón de chat que varias empresas pegan en sus propias páginas:**
-  * *Herramienta elegida:* Web Components nativos.
-  * *Justificación:* Al tratarse de un widget que se integrará en portales externos desarrollados con tecnologías completamente distintas (unos con WordPress, otros con React, Angular o PHP), los Web Components nativos garantizan una compatibilidad universal absoluta. Al estar encapsulados con Shadow DOM, se evita que los estilos CSS o scripts del chat entren en conflicto con los de la página anfitriona, funcionando de manera ligera y totalmente independiente.
-* **b. Una aplicación web grande para un banco, con muchos equipos de desarrollo:**
-  * *Herramienta elegida:* Angular o React.
-  * *Justificación:* Un proyecto bancario a gran escala exige convenciones estrictas, tipado robusto y una estructura estandarizada para que decenas de desarrolladores trabajen bajo las mismas reglas sin desordenar el código. Frameworks como Angular ofrecen de forma nativa inyección de dependencias, tipado con TypeScript estricto, enrutamiento oficial y formularios complejos, lo que reduce errores críticos y facilita el mantenimiento a largo plazo en entornos corporativos exigentes.
+### 4. Casos de uso
+•⁠  ⁠*a. Un botón de chat que varias empresas pegan en sus propias páginas:*
+  Usaría *Web Components nativos*, porque al ser un estándar del navegador, la empresa que lo consuma puede integrarlo fácilmente en cualquier sitio web sin importar si usa React, Angular o HTML plano, evitando conflictos de dependencias o estilos.
+•⁠  ⁠*b. Una aplicación web grande para un banco, con muchos equipos de desarrollo:*
+  Usaría *Angular* (o un framework robusto), ya que proporciona una arquitectura estricta, tipado fuerte con TypeScript y convenciones estandarizadas que facilitan que múltiples equipos trabajen ordenadamente en un proyecto corporativo complejo a gran escala.
 
 ---
 
-## 📚 Fuentes de Investigación
-1. **[Título del recurso, ej: MDN Web Docs - Using templates and slots]**  
-   * Enlace: `https://developer.mozilla.org/...`  
-   * Fecha de consulta: [Ej: 17 de noviembre de 2026][cite: 3]
-2. **[Título del recurso, ej: web.dev - Web Components]**  
-   * Enlace: `https://web.dev/...`  
-   * Fecha de consulta: [Ej: 17 de noviembre de 2026][cite: 3]
-3. **[Título del recurso, ej: Documentación oficial de Node.js]**  
-   * Enlace: `https://nodejs.org/...`  
-   * Fecha de consulta: [Ej: 17 de noviembre de 2026][cite: 3]
+## Fuentes de Investigación
+1.⁠ ⁠*MDN Web Docs* - Web Components | Enlace: ⁠ https://developer.mozilla.org/es/docs/Web/API/Web_components ⁠ | Fecha de consulta: 17 de noviembre de 2026. 
+<br>
+2.⁠ ⁠*React Documentation* - Main Concepts | Enlace: ⁠ https://react.dev/ ⁠ | Fecha de consulta: 17 de noviembre de 2026.
+<br>
+3.⁠ ⁠*Node.js Official Documentation* - About Node.js | Enlace: ⁠ https://nodejs.org/en/about ⁠ | Fecha de consulta: 17 de noviembre de 2026.
+
    
