@@ -47,28 +47,22 @@ Un *estándar del navegador* (como los Web Components) es una especificación na
 
 
 ### 3. ¿Qué es Node.js, para qué se usa y qué relación tiene npm con React, Vue y Angular? Si una tienda en línea usa React y Node.js, ¿qué hace cada uno?
-* **Respuesta:** 
-  * *Node.js y npm:* (Explica Node.js como entorno para ejecutar JavaScript fuera del navegador[cite: 4] y npm como su gestor de paquetes para instalar dependencias).
-  * *Caso de la tienda en línea:* (Explica que React se encarga de la interfaz de usuario en el cliente/navegador y Node.js del servidor, backend y APIs).
+•⁠  ⁠*Node.js y npm:* Node.js es un entorno de ejecución basado en el motor V8 de Chrome que permite ejecutar JavaScript fuera del navegador. Su gestor de paquetes (⁠ npm ⁠) se usa en React, Vue y Angular para instalar dependencias y bibliotecas de desarrollo.
+•⁠  ⁠*Tienda en línea (React y Node.js):* React se encarga de toda la interfaz de usuario del cliente (lo que ve el usuario en el navegador), mientras que Node.js funciona en el servidor gestionando la lógica de backend, las peticiones a la base de datos y las pasarelas de pago.
 
-### 4. Elige la herramienta que usarías en cada caso y justifica en 3 a 5 líneas:
-* **a. Un botón de chat que varias empresas pegan en sus propias páginas:**
-  * *Herramienta elegida:* Web Components nativos.
-  * *Justificación:* (Escribe 3 a 5 líneas justificando que al ser un estándar nativo, funciona en cualquier sitio web sin importar si usan React, Vue o HTML plano, evitando conflictos de dependencias).
-* **b. Una aplicación web grande para un banco, con muchos equipos de desarrollo:**
-  * *Herramienta elegida:* Angular o React.
-  * *Justificación:* (Escribe 3 a 5 líneas justificando que ofrecen una arquitectura estructurada, enrutamiento, manejo de estado robusto y convenciones estrictas ideales para grandes equipos corporativos).
+### 4. Casos de uso
+•⁠  ⁠*a. Un botón de chat que varias empresas pegan en sus propias páginas:*
+  Usaría *Web Components nativos*, porque al ser un estándar del navegador, la empresa que lo consuma puede integrarlo fácilmente en cualquier sitio web sin importar si usa React, Angular o HTML plano, evitando conflictos de dependencias o estilos.
+•⁠  ⁠*b. Una aplicación web grande para un banco, con muchos equipos de desarrollo:*
+  Usaría *Angular* (o un framework robusto), ya que proporciona una arquitectura estricta, tipado fuerte con TypeScript y convenciones estandarizadas que facilitan que múltiples equipos trabajen ordenadamente en un proyecto corporativo complejo a gran escala.
 
 ---
 
-## 📚 Fuentes de Investigación
-1. **[Título del recurso, ej: MDN Web Docs - Using templates and slots]**  
-   * Enlace: `https://developer.mozilla.org/...`  
-   * Fecha de consulta: [Ej: 17 de noviembre de 2026][cite: 3]
-2. **[Título del recurso, ej: web.dev - Web Components]**  
-   * Enlace: `https://web.dev/...`  
-   * Fecha de consulta: [Ej: 17 de noviembre de 2026][cite: 3]
-3. **[Título del recurso, ej: Documentación oficial de Node.js]**  
-   * Enlace: `https://nodejs.org/...`  
-   * Fecha de consulta: [Ej: 17 de noviembre de 2026][cite: 3]
+## Fuentes de Investigación
+1.⁠ ⁠*MDN Web Docs* - Web Components | Enlace: ⁠ https://developer.mozilla.org/es/docs/Web/API/Web_components ⁠ | Fecha de consulta: 17 de noviembre de 2026. 
+<br>
+2.⁠ ⁠*React Documentation* - Main Concepts | Enlace: ⁠ https://react.dev/ ⁠ | Fecha de consulta: 17 de noviembre de 2026.
+<br>
+3.⁠ ⁠*Node.js Official Documentation* - About Node.js | Enlace: ⁠ https://nodejs.org/en/about ⁠ | Fecha de consulta: 17 de noviembre de 2026.
+
    
